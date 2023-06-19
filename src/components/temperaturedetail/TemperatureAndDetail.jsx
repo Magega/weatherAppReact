@@ -3,12 +3,11 @@ import {
   UilArrowUp,
   UilTemperature,
   UilTear,
-  UilWind,
   UilSun,
   UilSunset,
 } from "@iconscout/react-unicons";
 
-function TemperatureAndDetail({mainWeatherInfo, countryDetails, weatherDetails}) {
+function TemperatureAndDetail({mainWeatherInfo, countryDetails, weatherDetails, getTimeWithTimeZone}) {
   return (
     <div className="flex flex-col justify-center items-center">
       <div className="flex flex-col items-center justify-center">
@@ -37,13 +36,14 @@ function TemperatureAndDetail({mainWeatherInfo, countryDetails, weatherDetails})
         <div className="flex mt-5">
           <div className="flex font-light text-sm items-center justify-center mx-2">
             <UilSun size={18} className="mr-1" />
-            Rise: <span className="font-medium ml-1">{countryDetails.sunrise}</span>
+            Rise: <span className="font-medium ml-1">
+              {getTimeWithTimeZone(countryDetails.timeZone, countryDetails.sunrise)}</span>
           </div>
           <p className="text-xl text-blue-500 mx-1 cursor-default">|</p>
 
           <div className="flex font-light text-sm items-center justify-center mx-2">
             <UilSunset size={18} className="mr-1" />
-            Set: <span className="font-medium ml-1">{countryDetails.sunset}</span>
+            Set: <span className="font-medium ml-1">{getTimeWithTimeZone(countryDetails.timeZone, countryDetails.sunset)}</span>
           </div>
           <p className="text-xl text-blue-500 mx-1 cursor-default">|</p>
 
