@@ -1,8 +1,12 @@
 import React from "react";
-import AppViewModel from "../../App.viewmodel";
+import TopButtonsViewModel from "./CitiesButtons.viewmodel";
 
-function CitiesButtons({ data, sortAsc, sortDesc, click }) {
-
+function CitiesButtons({ click }) {
+  const {
+    sortAsc,
+    sortDesc,
+    data
+  } = TopButtonsViewModel();
   return (
     <div className="flex flex-col justify-start items-center">
       <div className="flex flex-row justify-start items-center">

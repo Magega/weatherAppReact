@@ -5,6 +5,7 @@ import Inputs from "./components/inputs/Input";
 import TemperatureAndDetails from "./components/temperaturedetail/TemperatureAndDetail";
 // import AppViewModel from "./App.viewmodel";
 import TimeAndLocation from "./components/timeandlocation/TimeAndLocation.view";
+import {getTimeWithTimeZone} from "./utilities/normalize/TimeWithTimezone";
 function App() {
   const {
     data,
@@ -15,16 +16,11 @@ function App() {
     click,
     setCityName,
     searchButton,
-    sortAsc,
-    sortDesc,
   } = AppViewModel();
-
   return (
     <div>
       <CitiesButtons
         data={data}
-        sortAsc={sortAsc}
-        sortDesc={sortDesc}
         click={click}
       />
       <Inputs
@@ -36,12 +32,18 @@ function App() {
       {error && <p>Error</p>}
       {!loading && !error && weatherData && (
         <div>
-          <TimeAndLocation cityName={cityName} countryDetails={weatherData.countryDetails}/>
-          <TemperatureAndDetails mainWeatherInfo={weatherData.mainWeatherInfo} countryDetails={weatherData.countryDetails} weatherDetails={weatherData.weatherDetails}/>
+          <TimeAndLocation
+            cityName={cityName}
+            countryDetails={weatherData.countryDetails}
+          />
+          <TemperatureAndDetails
+            mainWeatherInfo={weatherData.mainWeatherInfo}
+            countryDetails={weatherData.countryDetails}
+            weatherDetails={weatherData.weatherDetails}
+            getTimeWithTimeZone= {getTimeWithTimeZone}
+          />
         </div>
       )}
-      {/* <TemperatureAndDetails />
-      <Forecast title="daily forecast" /> */}
     </div>
   );
 }

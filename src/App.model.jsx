@@ -1,16 +1,9 @@
-export class City {
-  constructor(id, name) {
-    this.id = id;
-    this.name = name;
-  }
-}
-
 export class WeatherData {
   constructor(id, mainWeatherInfo, countryDetails, weatherDetails) {
     this.id = id;
     this.mainWeatherInfo = mainWeatherInfo;
     this.countryDetails = countryDetails;
-    this.weatherDetails = weatherDetails
+    this.weatherDetails = weatherDetails;
   }
 }
 
@@ -25,16 +18,17 @@ export class MainWeatherInfo {
 }
 
 export class CountryDetails {
-  constructor(country, sunrise, sunset) {
+  constructor(country, sunrise, sunset, timeZone) {
     this.country = country;
     this.sunrise = sunrise;
     this.sunset = sunset;
+    this.timeZone = timeZone;
   }
 }
 export class WeatherDetails {
-    constructor(main, icon, description) {
-      this.main = main;
-      this.icon = icon;
-      this.description = description;
-    }
+  constructor(main, icon, description) {
+    this.main = main;
+    this.icon = icon;
+    this.description = description;
   }
+}
